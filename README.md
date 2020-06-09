@@ -56,6 +56,11 @@ http://${your ip address}:20080
 Enter user name land007 password 1234567
 
 
+## Updates
+* Added build check for nvm and set the node version to 8.10
+* Consolidated container mounted volumes under Container_Data
+* Updated build to default to English
+
 ## Features
 
 ### Search
