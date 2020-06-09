@@ -5,8 +5,8 @@ networks:
   internal_network:
     ipam:
       config:
-      - subnet: 172.21.0.0/16
-        gateway: 172.21.0.1
+      - subnet: 172.255.0.0/16
+        gateway: 172.255.0.1
 services:      
   db:
 #    restart: always
@@ -17,7 +17,7 @@ services:
     image: land007/ambar-mongodb:latest
     environment:
       - cacheSizeGB=2
-      - LANIP=172.21.0.10
+      - LANIP=172.255.0.10
     volumes:
       - ${PWD}/Container_Data/db:/data/db
     expose:
@@ -34,7 +34,7 @@ services:
     environment:
       - cluster.name=ambar-es
       - ES_JAVA_OPTS=-Xms2g -Xmx2g
-      - LANIP=172.21.0.10
+      - LANIP=172.255.0.10
     ulimits:
       memlock:
         soft: -1
@@ -58,7 +58,7 @@ services:
       - "15672"
       - "5672"   
     environment:
-      - LANIP=172.21.0.10
+      - LANIP=172.255.0.10
     volumes:
       - ${PWD}/Container_Data/rabbit:/var/lib/rabbitmq
   redis:
@@ -73,7 +73,7 @@ services:
     expose:
       - "6379" 
     environment:
-      - LANIP=172.21.0.10
+      - LANIP=172.255.0.10
   serviceapi:
     depends_on:
       redis:
@@ -101,7 +101,7 @@ services:
       - langAnalyzer=ambar_en
       - SLAO_HOSTNAME=ambar
       - SLAO_API_KEY=
-      - LANIP=172.21.0.10
+      - LANIP=172.255.0.10
   webapi:
     depends_on:
       serviceapi:
@@ -126,7 +126,7 @@ services:
       - rabbitHost=amqp://rabbit  
       - SLAO_HOSTNAME=ambar
       - SLAO_API_KEY=  
-      - LANIP=172.21.0.10
+      - LANIP=172.255.0.10
   frontend:
     depends_on:
       webapi:
@@ -143,7 +143,7 @@ services:
       - "80"
     environment:
       - api=
-      - LANIP=172.21.0.10
+      - LANIP=172.255.0.10
   pipeline0:
     depends_on: 
       serviceapi: 
@@ -158,7 +158,7 @@ services:
       - id=0
       - api_url=http://serviceapi:8081
       - rabbit_host=amqp://rabbit
-      - LANIP=172.21.0.10
+      - LANIP=172.255.0.10
   crawler2:
     depends_on: 
       serviceapi: 
@@ -173,7 +173,7 @@ services:
       - "8082"
     environment:      
       - name=crawler2
-      - LANIP=172.21.0.10
+      - LANIP=172.255.0.10
     volumes:
       -  $PWD/Container_Data/crawler_input:/usr/data
   node-http-proxy:
@@ -201,7 +201,7 @@ services:
       - ws_proxy_paths=/api/
       - ws_proxy_hosts=webapi
       - ws_proxy_ports=8080
-      - LANIP=172.21.0.10
+      - LANIP=172.255.0.10
     volumes:
       -  ~/docker/node-http-proxy:/node
   portainer:
@@ -219,5 +219,5 @@ services:
     ports:
       - "9001:9000"
     environment:
-      - LANIP=172.21.0.10
+      - LANIP=172.255.0.10
   
