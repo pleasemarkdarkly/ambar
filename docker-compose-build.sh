@@ -1,4 +1,8 @@
 # https://transfersh.pleasemarkdarkly.com/deK5M/docker-compose-build.sh
+
+# elaticsearch
+sysctl vm.max_map_count=262144
+
 cd FrontEnd
 
 [[ ! -x "$(command -v nvm)" ]] && (echo "nvm not found, setting it up" && wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash && return) || echo "nvm found...setting up 8.10"
@@ -35,3 +39,7 @@ unset DOCKER_HOST
 
 docker-compose down
 docker-compose up -d
+
+sleep 10
+
+curl http://localhost:20090 -u land007:1234567
