@@ -26,6 +26,12 @@ docker build . -t land007/ambar-serviceapi:2.1
 cd ../WebApi
 docker build . -t land007/ambar-webapi:2.1
 
-unset ${!DOCKER_*}
+# ZSH doesn't like this syntax
+# unset ${!DOCKER_*}
+unset DOCKER_TLS_VERIFY
+unset DOCKER_CERT_PATH
+unset DOCKER_MACHINE_NAME
+unset DOCKER_HOST
+
 docker-compose down
 docker-compose up -d
