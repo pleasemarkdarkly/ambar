@@ -29,6 +29,8 @@ cd ../ServiceApi
 docker build . -t land007/ambar-serviceapi:2.1
 cd ../WebApi
 docker build . -t land007/ambar-webapi:2.1
+cd ../node-http-proxy
+docker build -t land007/node-http-proxy:2.1 .
 
 # ZSH doesn't like this syntax
 # unset ${!DOCKER_*}

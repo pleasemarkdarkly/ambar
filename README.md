@@ -53,13 +53,15 @@ Open your address
 http://${your ip address}:20080
 ```
 
-Enter user name land007 password 1234567
+Enter user name admin password 1234567
 
 
 ## Updates
 * Added build check for nvm and set the node version to 8.10
 * Consolidated container mounted volumes under Container_Data
 * Updated build to default to English
+* Added node_http_proxy to project and included in the build process
+* Changed the username of the proxy - to change look at the [Dockerfile](../node-http-proxy)
 
 ## Features
 
