@@ -203,7 +203,7 @@ services:
       - ws_proxy_ports=8080
       - LANIP=172.255.0.10
     volumes:
-      - ${PWD}/Container_Data/node-http-proxy:/node
+      - node-http-proxy:/node
   portainer:
     restart: always
     privileged: true
@@ -220,3 +220,6 @@ services:
       - "9001:9000"
     environment:
       - LANIP=172.255.0.10
+
+volumes:
+  node-http-proxy:
