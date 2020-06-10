@@ -38,25 +38,25 @@ function setup_front_end() {
 
 cd FrontEnd
 [[ -f "$FRONTEND_FILE" ]] && (echo "FrontEnd dist folder and files were not detected, building..." && setup_front_end) || echo "FrontEnd has been built"
-docker build . -t land007/ambar-frontend:2.1
+docker build . -t pleasemarkdarkly/ambar-frontend:2.1
 cd ../Pipeline
-docker build . -t land007/ambar-pipeline:2.1
+docker build . -t pleasemarkdarkly/ambar-pipeline:2.1
 cd ../LocalCrawler
-docker build . -t land007/ambar-local-crawler:2.1
+docker build . -t pleasemarkdarkly/ambar-local-crawler:2.1
 cd ../MongoDB
-docker build . -t land007/ambar-mongodb:2.1
+docker build . -t pleasemarkdarkly/ambar-mongodb:2.1
 cd ../ElasticSearch
-docker build . -t land007/ambar-es:2.1
+docker build . -t pleasemarkdarkly/ambar-es:2.1
 cd ../Rabbit
-docker build . -t land007/ambar-rabbit:2.1
+docker build . -t pleasemarkdarkly/ambar-rabbit:2.1
 cd ../Redis
-docker build . -t land007/ambar-redis:2.1
+docker build . -t pleasemarkdarkly/ambar-redis:2.1
 cd ../ServiceApi
-docker build . -t land007/ambar-serviceapi:2.1
+docker build . -t pleasemarkdarkly/ambar-serviceapi:2.1
 cd ../WebApi
-docker build . -t land007/ambar-webapi:2.1
+docker build . -t pleasemarkdarkly/ambar-webapi:2.1
 cd ../node-http-proxy
-docker build . -t land007/node-http-proxy:2.1
+docker build . -t pleasemarkdarkly/node-http-proxy:2.1
 
 [[ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]] && unset ${!DOCKER_*} || echo "Skipping unset DOCKER_* env variable, shell is not BASH"
 [[ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]] && (unset DOCKER_TLS_VERIFY && unset DOCKER_CERT_PATH && unset DOCKER_MACHINE_NAME && unset DOCKER_HOST) \

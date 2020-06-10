@@ -14,7 +14,7 @@ services:
     privileged: true
     networks:
       - internal_network
-    image: land007/ambar-mongodb:latest
+    image: pleasemarkdarkly/ambar-mongodb:2.1
     environment:
       - cacheSizeGB=2
       - LANIP=172.255.0.10
@@ -28,7 +28,7 @@ services:
     privileged: true
     networks:
       - internal_network
-    image: land007/ambar-es:latest
+    image: pleasemarkdarkly/ambar-es:2.1
     expose:
       - "9200" 
     environment:
@@ -52,7 +52,7 @@ services:
     container_name: ambar_rabbit
     networks:
       - internal_network
-    image: land007/ambar-rabbit:latest
+    image: pleasemarkdarkly/ambar-rabbit:2.1
     hostname: rabbit
     expose:
       - "15672"
@@ -69,7 +69,7 @@ services:
       - net.core.somaxconn=1024
     networks:
       - internal_network
-    image: land007/ambar-redis:latest
+    image: pleasemarkdarkly/ambar-redis:2.1
     expose:
       - "6379" 
     environment:
@@ -89,7 +89,7 @@ services:
     container_name: ambar_serviceapi
     networks:
       - internal_network
-    image: land007/ambar-serviceapi:latest
+    image: pleasemarkdarkly/ambar-serviceapi:2.1
     expose:
       - "8081"  
     environment:            
@@ -111,7 +111,7 @@ services:
     privileged: true
     networks:
       - internal_network
-    image: land007/ambar-webapi:latest
+    image: pleasemarkdarkly/ambar-webapi:2.1
     expose:
       - "8080"
 #    ports:
@@ -132,7 +132,7 @@ services:
       webapi:
         condition: service_healthy
     container_name: ambar_frontend
-    image: land007/ambar-frontend:latest
+    image: pleasemarkdarkly/ambar-frontend:2.1
     restart: always
     privileged: true
     networks:
@@ -149,7 +149,7 @@ services:
       serviceapi: 
         condition: service_healthy
     container_name: ambar_pipeline
-    image: land007/ambar-pipeline:latest
+    image: pleasemarkdarkly/ambar-pipeline:2.1
     restart: always
     privileged: true
     networks:
@@ -164,7 +164,7 @@ services:
       serviceapi: 
         condition: service_healthy
     container_name: ambar_crawler 
-    image: land007/ambar-local-crawler:latest
+    image: pleasemarkdarkly/ambar-local-crawler:2.1
     restart: always
     privileged: true
     networks:
@@ -182,7 +182,7 @@ services:
         condition: service_healthy 
       webapi: 
         condition: service_healthy 
-    image: land007/node-http-proxy:latest
+    image: pleasemarkdarkly/node-http-proxy:2.1
     container_name: ambar_node-http-proxy
     restart: always
     privileged: true
@@ -210,7 +210,7 @@ services:
     container_name: ambar_portainer
     networks:
       - internal_network
-    image: land007/portainer:latest
+    image: portainer/portainer:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${PWD}/Container_Data/portainer_data:/data
