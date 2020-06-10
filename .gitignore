@@ -373,3 +373,4 @@ doc/
 */yarn.lock
 
 ./Container_Data/
+./FrontEnd/dist
