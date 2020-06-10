@@ -1,6 +1,6 @@
 # https://transfersh.pleasemarkdarkly.com/J73Ny/docker-compose.yml%
 
-version: "2.1"
+version: "latest"
 networks:
   internal_network:
     ipam:
@@ -14,7 +14,7 @@ services:
     privileged: true
     networks:
       - internal_network
-    image: pleasemarkdarkly/ambar-mongodb:2.1
+    image: pleasemarkdarkly/ambar-mongodb:latest
     environment:
       - cacheSizeGB=2
       - LANIP=172.255.0.10
@@ -28,7 +28,7 @@ services:
     privileged: true
     networks:
       - internal_network
-    image: pleasemarkdarkly/ambar-es:2.1
+    image: pleasemarkdarkly/ambar-es:latest
     expose:
       - "9200" 
     environment:
@@ -52,7 +52,7 @@ services:
     container_name: ambar_rabbit
     networks:
       - internal_network
-    image: pleasemarkdarkly/ambar-rabbit:2.1
+    image: pleasemarkdarkly/ambar-rabbit:latest
     hostname: rabbit
     expose:
       - "15672"
@@ -69,7 +69,7 @@ services:
       - net.core.somaxconn=1024
     networks:
       - internal_network
-    image: pleasemarkdarkly/ambar-redis:2.1
+    image: pleasemarkdarkly/ambar-redis:latest
     expose:
       - "6379" 
     environment:
@@ -89,7 +89,7 @@ services:
     container_name: ambar_serviceapi
     networks:
       - internal_network
-    image: pleasemarkdarkly/ambar-serviceapi:2.1
+    image: pleasemarkdarkly/ambar-serviceapi:latest
     expose:
       - "8081"  
     environment:            
@@ -111,7 +111,7 @@ services:
     privileged: true
     networks:
       - internal_network
-    image: pleasemarkdarkly/ambar-webapi:2.1
+    image: pleasemarkdarkly/ambar-webapi:latest
     expose:
       - "8080"
 #    ports:
@@ -132,7 +132,7 @@ services:
       webapi:
         condition: service_healthy
     container_name: ambar_frontend
-    image: pleasemarkdarkly/ambar-frontend:2.1
+    image: pleasemarkdarkly/ambar-frontend:latest
     restart: always
     privileged: true
     networks:
@@ -149,7 +149,7 @@ services:
       serviceapi: 
         condition: service_healthy
     container_name: ambar_pipeline
-    image: pleasemarkdarkly/ambar-pipeline:2.1
+    image: pleasemarkdarkly/ambar-pipeline:latest
     restart: always
     privileged: true
     networks:
@@ -164,7 +164,7 @@ services:
       serviceapi: 
         condition: service_healthy
     container_name: ambar_crawler 
-    image: pleasemarkdarkly/ambar-local-crawler:2.1
+    image: pleasemarkdarkly/ambar-local-crawler:latest
     restart: always
     privileged: true
     networks:
@@ -182,7 +182,7 @@ services:
         condition: service_healthy 
       webapi: 
         condition: service_healthy 
-    image: pleasemarkdarkly/node-http-proxy:2.1
+    image: pleasemarkdarkly/node-http-proxy:latest
     container_name: ambar_node-http-proxy
     restart: always
     privileged: true
