@@ -9,7 +9,7 @@ networks:
         gateway: 172.255.0.1
 services:      
   db:
-#    restart: always
+    restart: always
     container_name: ambar_db
     privileged: true
     networks:
@@ -23,7 +23,7 @@ services:
     expose:
       - "27017"   
   es:
-#    restart: always
+    restart: always
     container_name: ambar_es
     privileged: true
     networks:
@@ -47,7 +47,7 @@ services:
     volumes:
       - ${PWD}/Container_Data/es:/usr/share/elasticsearch/data
   rabbit:
-#    restart: always
+    restart: always
     privileged: true
     container_name: ambar_rabbit
     networks:
@@ -62,7 +62,7 @@ services:
     volumes:
       - ${PWD}/Container_Data/rabbit:/var/lib/rabbitmq
   redis:
-#    restart: always
+    restart: always
     privileged: true
     container_name: ambar_redis
     sysctls:
@@ -84,7 +84,7 @@ services:
         condition: service_healthy
       db:
         condition: service_healthy
-#    restart: always
+    restart: always
     privileged: true
     container_name: ambar_serviceapi
     networks:
@@ -107,7 +107,7 @@ services:
       serviceapi:
         condition: service_healthy
     container_name: ambar_webapi
-#    restart: always
+    restart: always
     privileged: true
     networks:
       - internal_network
@@ -133,7 +133,7 @@ services:
         condition: service_healthy
     container_name: ambar_frontend
     image: land007/ambar-frontend:latest
-#    restart: always
+    restart: always
     privileged: true
     networks:
       - internal_network
@@ -150,7 +150,7 @@ services:
         condition: service_healthy
     container_name: ambar_pipeline
     image: land007/ambar-pipeline:latest
-#    restart: always
+    restart: always
     privileged: true
     networks:
       - internal_network  
@@ -165,7 +165,7 @@ services:
         condition: service_healthy
     container_name: ambar_crawler 
     image: land007/ambar-local-crawler:latest
-#    restart: always
+    restart: always
     privileged: true
     networks:
       - internal_network
@@ -184,7 +184,7 @@ services:
         condition: service_healthy 
     image: land007/node-http-proxy:latest
     container_name: ambar_node-http-proxy
-#    restart: always
+    restart: always
     privileged: true
     networks:
       - internal_network
@@ -203,9 +203,9 @@ services:
       - ws_proxy_ports=8080
       - LANIP=172.255.0.10
     volumes:
-      -  ~/docker/node-http-proxy:/node
+      - ${PWD}/Container_Data/node-http-proxy:/node
   portainer:
-#    restart: always
+    restart: always
     privileged: true
     container_name: ambar_portainer
     networks:
@@ -220,4 +220,3 @@ services:
       - "9001:9000"
     environment:
       - LANIP=172.255.0.10
-  
