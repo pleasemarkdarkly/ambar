@@ -1,6 +1,6 @@
 # https://transfersh.pleasemarkdarkly.com/J73Ny/docker-compose.yml%
 
-version: "latest"
+version: "2.1"
 networks:
   internal_network:
     ipam:
@@ -213,7 +213,7 @@ services:
     image: portainer/portainer:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ${PWD}/Container_Data/portainer_data:/data
+      - portainer_data:/data
     expose:
       - "9000"
     ports:
@@ -223,3 +223,4 @@ services:
 
 volumes:
   node-http-proxy:
+  portainer_data:

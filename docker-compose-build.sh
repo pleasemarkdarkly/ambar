@@ -57,6 +57,7 @@ cd ../WebApi
 docker build . -t pleasemarkdarkly/ambar-webapi:latest
 cd ../node-http-proxy
 docker build . -t pleasemarkdarkly/node-http-proxy:latest
+cd ..
 
 [[ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]] && unset ${!DOCKER_*} || echo "Skipping unset DOCKER_* env variable, shell is not BASH"
 [[ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]] && (unset DOCKER_TLS_VERIFY && unset DOCKER_CERT_PATH && unset DOCKER_MACHINE_NAME && unset DOCKER_HOST) \
