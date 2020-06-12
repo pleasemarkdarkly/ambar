@@ -175,7 +175,8 @@ services:
       - name=crawler2
       - LANIP=172.255.0.10
     volumes:
-      -  $PWD/Container_Data/crawler_input:/usr/data
+#      - /User/mark.phillips/Documents:/usr/data:ro
+      - ${PWD}/Container_Data/crawler_input:/usr/data:ro
   node-http-proxy:
     depends_on: 
       frontend: 

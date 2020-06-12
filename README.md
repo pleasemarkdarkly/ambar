@@ -62,6 +62,7 @@ Enter user name admin password 1234567
 * Updated build to default to English
 * Added node_http_proxy to project and included in the build process
 * Changed the username of the proxy - to change look at the [Dockerfile](../node-http-proxy)
+* Available from [https://hub.docker.com/u/pleasemarkdarkly](https://hub.docker.com/u/pleasemarkdarkly)
 
 ## Features
 
